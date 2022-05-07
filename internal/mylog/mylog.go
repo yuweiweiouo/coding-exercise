@@ -2,6 +2,7 @@ package mylog
 
 import (
 	"os"
+	"path"
 
 	"github.com/google/wire"
 	"github.com/spf13/viper"
@@ -34,6 +35,7 @@ func NewOption(v *viper.Viper) (*Option, error) {
 }
 
 func New(option *Option) (*zap.Logger, error) {
+	os.MkdirAll(path.Dir(option.Filename), os.ModePerm)
 	level, _ := zap.ParseAtomicLevel(option.Level)
 
 	fw := zapcore.AddSync(&lumberjack.Logger{

@@ -7,11 +7,11 @@ import (
 	"github.com/google/wire"
 	"github.com/yuweiweiouo/coding-exercise/internal/config"
 	"github.com/yuweiweiouo/coding-exercise/internal/controller"
+	"github.com/yuweiweiouo/coding-exercise/internal/dao"
 	"github.com/yuweiweiouo/coding-exercise/internal/db"
 	"github.com/yuweiweiouo/coding-exercise/internal/mylog"
 	"github.com/yuweiweiouo/coding-exercise/internal/router"
 	"github.com/yuweiweiouo/coding-exercise/internal/service"
-	"github.com/yuweiweiouo/coding-exercise/internal/dao"
 )
 
 func CreateServer(configName string) (*Server, func(), error) {

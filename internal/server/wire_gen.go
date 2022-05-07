@@ -23,11 +23,11 @@ func CreateServer(configName string) (*Server, func(), error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	option, err := db.NewOption(viper)
+	option, err := mylog.NewOption(viper)
 	if err != nil {
 		return nil, nil, err
 	}
-	gormDB, err := db.New(option)
+	logger, err := mylog.New(option)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -39,11 +39,11 @@ func CreateServer(configName string) (*Server, func(), error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	mylogOption, err := mylog.NewOption(viper)
+	dbOption, err := db.NewOption(viper)
 	if err != nil {
 		return nil, nil, err
 	}
-	logger, err := mylog.New(mylogOption)
+	gormDB, err := db.New(dbOption)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -54,7 +54,7 @@ func CreateServer(configName string) (*Server, func(), error) {
 		Task: taskController,
 	}
 	engine := router.New(routerOption, controllers, logger)
-	server := New(gormDB, serverOption, engine)
+	server := New(logger, serverOption, engine)
 	return server, func() {
 	}, nil
 }

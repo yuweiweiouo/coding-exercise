@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/google/wire"
 	"github.com/spf13/viper"
-	"gorm.io/gorm"
+	"go.uber.org/zap"
 )
 
 var Provider = wire.NewSet(New, NewOption)
@@ -29,19 +29,21 @@ func NewOption(v *viper.Viper) (*Option, error) {
 }
 
 type Server struct {
+	logger *zap.Logger
 	option *Option
 	router *gin.Engine
-	Db     *gorm.DB
 }
 
 func (s Server) Start() error {
-	return s.router.Run(fmt.Sprintf(":%d", s.option.Port))
+	addr := fmt.Sprintf(":%d", s.option.Port)
+	s.logger.Info("伺服器啟動 => " + addr)
+	return s.router.Run(addr)
 }
 
-func New(db *gorm.DB, option *Option, router *gin.Engine) *Server {
+func New(logger *zap.Logger, option *Option, router *gin.Engine) *Server {
 	return &Server{
 		option: option,
 		router: router,
-		Db:     db,
+		logger: logger,
 	}
 }

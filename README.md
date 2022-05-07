@@ -28,6 +28,22 @@ Implement a Restful task list API as well as run this application in container.
 - About Database
   - DB is a complex component that you can use in-memory mechanism to handle data storage problem.
 
+## Start the project
+### Build up the docker image
+```
+# use make
+$ make docker
+
+# or manually execute docker command 
+$ docker .
+```
+### Run the docker image
+```
+$ docker run -d --name coding-exercise -p 8888:80 coding-exercise
+```
+https://go.googlesource.com/example is the canonical Git repository.
+It is mirrored at https://github.com/golang/example.
+## [hello](hello/) and [stringutil](stringutil/)
 
 ### 1.  GET /tasks (list tasks)
 ```

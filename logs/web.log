@@ -182,3 +182,4 @@
 {"level":"info","ts":1651926510.9069014,"msg":"/task","status":200,"method":"GET","path":"/task","query":"","ip":"::1","user-agent":"PostmanRuntime/7.29.0","latency":0.0008182,"time":"2022-05-07T12:28:30Z"}
 {"level":"info","ts":1651926511.4316263,"msg":"/task","status":200,"method":"GET","path":"/task","query":"","ip":"::1","user-agent":"PostmanRuntime/7.29.0","latency":0.0008756,"time":"2022-05-07T12:28:31Z"}
 {"level":"info","ts":1651926511.8520055,"msg":"/task","status":200,"method":"GET","path":"/task","query":"","ip":"::1","user-agent":"PostmanRuntime/7.29.0","latency":0,"time":"2022-05-07T12:28:31Z"}
+{"level":"info","ts":1651927665.8373206,"msg":"伺服器啟動 => :80"}

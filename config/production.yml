@@ -1,0 +1,16 @@
+server: 
+  port: 80
+
+log:
+  level: "info"
+  filename: "./logs/web.log"
+  stdout: true
+  
+router:
+  mode: "release"
+  pprof: false
+
+database: 
+  dsn: "file::memory:?cache=shared"
+
+  

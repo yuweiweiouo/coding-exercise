@@ -12,7 +12,6 @@ var rootCmd = &cobra.Command{
 	Use:   "coding-exercise",
 	Short: "Start a Restful task list API server",
 	Run: func(cmd *cobra.Command, args []string) {
-		// TODO
 		configName, err := cmd.Flags().GetString("config")
 		if err != nil {
 			log.Panic(err)
@@ -36,5 +35,5 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().StringP("config", "c", "local", "欲使用的config")
+	rootCmd.Flags().StringP("config", "c", "local", "想使用的配置檔名稱")
 }
