@@ -32,18 +32,12 @@ Implement a Restful task list API as well as run this application in container.
 ### Build up the docker image
 ```
 # use make
-$ make docker
-
-# or manually execute docker command 
-$ docker .
+$ make docker-build
 ```
 ### Run the docker image
 ```
-$ docker run -d --name coding-exercise -p 8888:80 coding-exercise
+$ make docker-run
 ```
-https://go.googlesource.com/example is the canonical Git repository.
-It is mirrored at https://github.com/golang/example.
-## [hello](hello/) and [stringutil](stringutil/)
 
 ### 1.  GET /tasks (list tasks)
 ```
