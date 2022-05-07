@@ -5,7 +5,7 @@ import (
 	"os"
 
 	"github.com/spf13/cobra"
-	"github.com/yuweiweiouo/coding-exercise/internal/app"
+	"github.com/yuweiweiouo/coding-exercise/internal/server"
 )
 
 var rootCmd = &cobra.Command{
@@ -13,11 +13,18 @@ var rootCmd = &cobra.Command{
 	Short: "Start a Restful task list API server",
 	Run: func(cmd *cobra.Command, args []string) {
 		// TODO
-		_, cleanup, err := app.CreateApp()
+		configName, err := cmd.Flags().GetString("config")
 		if err != nil {
 			log.Panic(err)
+			os.Exit(1)
+		}
+		server, cleanup, err := server.CreateServer(configName)
+		if err != nil {
+			log.Panic(err)
+			os.Exit(1)
 		}
 		defer cleanup()
+		server.Start()
 	},
 }
 
@@ -29,5 +36,5 @@ func Execute() {
 }
 
 func init() {
-	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	rootCmd.Flags().StringP("config", "c", "local", "欲使用的config")
 }

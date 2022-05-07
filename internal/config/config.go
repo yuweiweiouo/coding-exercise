@@ -8,12 +8,14 @@ import (
 var Provider = wire.NewSet(New)
 
 type Config struct {
-	Database string `mapstructure:"database"`
+	Port     int
+	Debug    bool
+	Database string
 }
 
-func New() (*Config, error) {
-	viper.SetConfigName("local")
+func New(name string) (*Config, error) {
 	viper.AddConfigPath("config")
+	viper.SetConfigName(name)
 	if err := viper.ReadInConfig(); err != nil {
 		return nil, err
 	}
