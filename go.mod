@@ -11,9 +11,16 @@ require (
 )
 
 require (
+	go.uber.org/atomic v1.9.0 // indirect
+	go.uber.org/multierr v1.8.0 // indirect
+	go.uber.org/zap v1.21.0 // indirect
+)
+
+require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/gin-contrib/pprof v1.3.0
 	github.com/gin-contrib/sse v0.1.0 // indirect
+	github.com/gin-contrib/zap v0.0.2
 	github.com/gin-gonic/gin v1.7.7 // indirect
 	github.com/go-playground/locales v0.13.0 // indirect
 	github.com/go-playground/universal-translator v0.17.0 // indirect
@@ -44,6 +51,7 @@ require (
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.28.0 // indirect
 	gopkg.in/ini.v1 v1.66.4 // indirect
+	gopkg.in/natefinch/lumberjack.v2 v2.0.0
 	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.0-20210107192922-496545a6307b // indirect
 )

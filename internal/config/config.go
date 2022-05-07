@@ -13,17 +13,13 @@ type Config struct {
 	Database string
 }
 
-func New(name string) (*Config, error) {
-	viper.AddConfigPath("config")
-	viper.SetConfigName(name)
-	if err := viper.ReadInConfig(); err != nil {
+func New(name string) (*viper.Viper, error) {
+	v := viper.New()
+	v.AddConfigPath("config")
+	v.SetConfigName(name)
+	if err := v.ReadInConfig(); err != nil {
 		return nil, err
 	}
 
-	c := &Config{}
-	if err := viper.Unmarshal(c); err != nil {
-		return nil, err
-	}
-
-	return c, nil
+	return v, nil
 }

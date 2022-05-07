@@ -8,15 +8,17 @@ import (
 	"github.com/yuweiweiouo/coding-exercise/internal/config"
 	"github.com/yuweiweiouo/coding-exercise/internal/controller"
 	"github.com/yuweiweiouo/coding-exercise/internal/db"
+	"github.com/yuweiweiouo/coding-exercise/internal/mylog"
 	"github.com/yuweiweiouo/coding-exercise/internal/router"
 )
 
 func CreateServer(configName string) (*Server, func(), error) {
 	panic(wire.Build(
-		New,
+		Provider,
 		config.Provider,
 		db.Provider,
 		controller.Provider,
 		router.Provider,
+		mylog.Provider,
 	))
 }
