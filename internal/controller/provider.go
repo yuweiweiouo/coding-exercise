@@ -3,10 +3,10 @@ package controller
 import "github.com/google/wire"
 
 type Controllers struct {
-	Book BookController
+	Task TaskController
 }
 
 var Provider = wire.NewSet(
-	NewBookController,
+	NewTaskController,
 	wire.Struct(new(Controllers), "*"),
 )

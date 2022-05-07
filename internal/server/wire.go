@@ -10,6 +10,8 @@ import (
 	"github.com/yuweiweiouo/coding-exercise/internal/db"
 	"github.com/yuweiweiouo/coding-exercise/internal/mylog"
 	"github.com/yuweiweiouo/coding-exercise/internal/router"
+	"github.com/yuweiweiouo/coding-exercise/internal/service"
+	"github.com/yuweiweiouo/coding-exercise/internal/dao"
 )
 
 func CreateServer(configName string) (*Server, func(), error) {
@@ -20,5 +22,7 @@ func CreateServer(configName string) (*Server, func(), error) {
 		controller.Provider,
 		router.Provider,
 		mylog.Provider,
+		service.Provider,
+		dao.Provider,
 	))
 }

@@ -46,11 +46,14 @@ func New(option *Option, ctls *controller.Controllers, logger *zap.Logger) *gin.
 		pprof.Register(r)
 	}
 
-	addBookRoute(r, ctls.Book)
+	addTaskRoute(r, ctls.Task)
 
 	return r
 }
 
-func addBookRoute(r *gin.Engine, ctl controller.BookController) {
-	r.GET("book", ctl.All)
+func addTaskRoute(r *gin.Engine, ctl controller.TaskController) {
+	r.GET("task", ctl.All)
+	r.POST("task", ctl.Create)
+	r.PUT("task/:id", ctl.Update)
+	r.DELETE("task/:id", ctl.Delete)
 }

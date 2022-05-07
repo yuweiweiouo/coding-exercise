@@ -9,9 +9,11 @@ package server
 import (
 	"github.com/yuweiweiouo/coding-exercise/internal/config"
 	"github.com/yuweiweiouo/coding-exercise/internal/controller"
+	"github.com/yuweiweiouo/coding-exercise/internal/dao"
 	"github.com/yuweiweiouo/coding-exercise/internal/db"
 	"github.com/yuweiweiouo/coding-exercise/internal/mylog"
 	"github.com/yuweiweiouo/coding-exercise/internal/router"
+	"github.com/yuweiweiouo/coding-exercise/internal/service"
 )
 
 // Injectors from wire.go:
@@ -45,9 +47,11 @@ func CreateServer(configName string) (*Server, func(), error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	bookController := controller.NewBookController(logger)
+	taskDao := dao.NewTaskDao(gormDB, logger)
+	taskService := service.NewTaskService(taskDao)
+	taskController := controller.NewTaskController(logger, taskService)
 	controllers := &controller.Controllers{
-		Book: bookController,
+		Task: taskController,
 	}
 	engine := router.New(routerOption, controllers, logger)
 	server := New(gormDB, serverOption, engine)

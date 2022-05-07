@@ -3,6 +3,7 @@ package db
 import (
 	"github.com/google/wire"
 	"github.com/spf13/viper"
+	"github.com/yuweiweiouo/coding-exercise/internal/model"
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
@@ -28,6 +29,8 @@ func New(option *Option) (db *gorm.DB, err error) {
 	if err != nil {
 		return nil, err
 	}
+
+	db.AutoMigrate(&model.Task{})
 
 	return db, nil
 }
