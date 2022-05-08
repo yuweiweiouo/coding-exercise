@@ -63,12 +63,6 @@ func (ctl taskController) Create(ctx *gin.Context) {
 
 func (ctl taskController) Update(ctx *gin.Context) {
 	var payload request.UpdateTask
-	id, err := strconv.Atoi(ctx.Param("id"))
-	if err != nil {
-		ctl.error(ctx, http.StatusBadRequest, ErrInvaildData)
-		return
-	}
-
 	if err := ctx.BindJSON(&payload); err != nil {
 		ctl.error(ctx, http.StatusBadRequest, ErrInvaildData)
 		return
@@ -79,12 +73,12 @@ func (ctl taskController) Update(ctx *gin.Context) {
 	}
 
 	task := model.Task{
-		Id:     id,
+		Id:     payload.Id,
 		Name:   payload.Name,
 		Status: payload.Status,
 	}
 
-	task, err = ctl.service.UpdateTask(task)
+	task, err := ctl.service.UpdateTask(task)
 	if err != nil {
 		ctl.error(ctx, http.StatusInternalServerError, err)
 		return

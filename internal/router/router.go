@@ -54,6 +54,6 @@ func New(option *Option, ctls *controller.Controllers, logger *zap.Logger) *gin.
 func addTaskRoute(r *gin.Engine, ctl controller.TaskController) {
 	r.GET("task", ctl.All)
 	r.POST("task", ctl.Create)
-	r.PUT("task/:id", ctl.Update)
+	r.PUT("task", ctl.Update)
 	r.DELETE("task/:id", ctl.Delete)
 }
