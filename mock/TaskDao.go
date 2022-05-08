@@ -17,15 +17,15 @@ var _ dao.TaskDao = (*TaskDao)(nil)
 
 func (dao *TaskDao) GetAll() []model.Task {
 	args := dao.Called()
-    return args.Get(0).([]model.Task)
+	return args.Get(0).([]model.Task)
 }
 func (dao *TaskDao) Create(task model.Task) (model.Task, error){
 	args := dao.Called(task)
-    return args.Get(0).(model.Task), args.Error(1)
+	return args.Get(0).(model.Task), args.Error(1)
 }
 func (dao *TaskDao) Update(task model.Task) (model.Task, error){
 	args := dao.Called(task)
-    return args.Get(0).(model.Task), args.Error(1)
+	return args.Get(0).(model.Task), args.Error(1)
 }
 func (dao *TaskDao) Delete(id int) error{
 	args := dao.Called(id)

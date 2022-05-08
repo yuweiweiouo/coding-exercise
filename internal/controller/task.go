@@ -65,7 +65,7 @@ func (ctl taskController) Update(ctx *gin.Context) {
 	var payload request.UpdateTask
 	id, err := strconv.Atoi(ctx.Param("id"))
 	if err != nil {
-		ctl.error(ctx, http.StatusBadRequest, err)
+		ctl.error(ctx, http.StatusBadRequest, ErrInvaildData)
 		return
 	}
 
