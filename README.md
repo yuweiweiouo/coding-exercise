@@ -39,6 +39,7 @@ $ make docker-build
 $ make docker-run
 ```
 
+## API
 ### 1.  GET /tasks (list tasks)
 ```
 {

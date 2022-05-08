@@ -22,18 +22,18 @@ type taskService struct {
 	taskDao dao.TaskDao
 }
 
-func (serv taskService) GetAll() []model.Task {
+func (serv *taskService) GetAll() []model.Task {
 	return serv.taskDao.GetAll()
 }
 
-func (serv taskService) CreateTask(task model.Task) (model.Task, error) {
+func (serv *taskService) CreateTask(task model.Task) (model.Task, error) {
 	return serv.taskDao.Create(task)
 }
 
-func (serv taskService) UpdateTask(task model.Task) (model.Task, error) {
+func (serv *taskService) UpdateTask(task model.Task) (model.Task, error) {
 	return serv.taskDao.Update(task)
 }
 
-func (serv taskService) DeleteTask(id int) error {
+func (serv *taskService) DeleteTask(id int) error {
 	return serv.taskDao.Delete(id)
 }

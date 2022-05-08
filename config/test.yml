@@ -2,13 +2,13 @@ server:
   port: 8888
 
 log:
-  level: "debug"
-  filename: "./logs/local.log"
+  level: "warn"
+  filename: "./logs/test.log"
   stdout: true
   
 router:
   mode: "debug"
-  pprof: true
+  pprof: false
 
 database: 
   dsn: "file::memory:?cache=shared"
