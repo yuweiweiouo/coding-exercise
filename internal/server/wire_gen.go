@@ -11,7 +11,7 @@ import (
 	"github.com/yuweiweiouo/coding-exercise/internal/controller"
 	"github.com/yuweiweiouo/coding-exercise/internal/dao"
 	"github.com/yuweiweiouo/coding-exercise/internal/db"
-	"github.com/yuweiweiouo/coding-exercise/internal/mylog"
+	"github.com/yuweiweiouo/coding-exercise/internal/log"
 	"github.com/yuweiweiouo/coding-exercise/internal/router"
 	"github.com/yuweiweiouo/coding-exercise/internal/service"
 )
@@ -23,11 +23,11 @@ func CreateServer(configName string) (*Server, func(), error) {
 	if err != nil {
 		return nil, nil, err
 	}
-	option, err := mylog.NewOption(viper)
+	option, err := log.NewOption(viper)
 	if err != nil {
 		return nil, nil, err
 	}
-	logger, err := mylog.New(option)
+	logger, err := log.New(option)
 	if err != nil {
 		return nil, nil, err
 	}

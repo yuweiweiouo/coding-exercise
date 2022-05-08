@@ -9,7 +9,7 @@ import (
 	"github.com/yuweiweiouo/coding-exercise/internal/controller"
 	"github.com/yuweiweiouo/coding-exercise/internal/dao"
 	"github.com/yuweiweiouo/coding-exercise/internal/db"
-	"github.com/yuweiweiouo/coding-exercise/internal/mylog"
+	"github.com/yuweiweiouo/coding-exercise/internal/log"
 	"github.com/yuweiweiouo/coding-exercise/internal/router"
 	"github.com/yuweiweiouo/coding-exercise/internal/service"
 )
@@ -21,7 +21,7 @@ func CreateServer(configName string) (*Server, func(), error) {
 		db.Provider,
 		controller.Provider,
 		router.Provider,
-		mylog.Provider,
+		log.Provider,
 		service.Provider,
 		dao.Provider,
 	))
