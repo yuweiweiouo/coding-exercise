@@ -20,7 +20,6 @@ docker-build:
 
 .PHONY: docker-run
 docker-run: 
-	docker stop coding-exercise || echo "try stop"
-	docker rm coding-exercise || echo "try rm"
+	docker rm -f coding-exercise || echo "try rm"
 	docker run -d --name coding-exercise -p 8888:80 coding-exercise
 
